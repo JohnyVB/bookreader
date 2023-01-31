@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { DrawerScreenProps } from '@react-navigation/drawer';
-import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
 import { BackgroundLogin } from '../components/BackgroundLogin';
 import { RootDrawerParams } from '../router/HomeDrawer';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useChapterView } from '../hooks/useChapterView';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Picker } from '@react-native-picker/picker';
 import Pdf from 'react-native-pdf';
 
 interface Props extends DrawerScreenProps<RootDrawerParams, 'ViewScreen'> {};
@@ -47,19 +46,6 @@ export const ViewScreen = ({navigation, route}: Props) => {
                         }
                     </View>
                     <View>
-                        {/* {
-                            (!user?.reader)
-                                && (
-                                    <Picker
-                                        // selectedValue={}
-                                        onValueChange={(itemValue, itemIndex) => {}}
-                                        style={styles.picker}
-                                    >
-                                        <Picker.Item label='{index}' value='{index}' />
-                                    </Picker>
-                                )
-                        } */}
-
                         <TouchableOpacity
                             activeOpacity={0.8}
                             style={styles.buttonComment}
@@ -91,34 +77,9 @@ export const ViewScreen = ({navigation, route}: Props) => {
             
                 <Pdf 
                     source={{uri: currentChapter?.image, cache: true}}
-                    // onLoadComplete={(numberOfPages) => {
-                       
-                    // }}
-                    // onError={(error) => {
-                    //     console.log(error);
-                    // }}
-                    // onPageChanged={(page) => {
-                       
-                    // }}
                     style={styles.pdf}
                 />
-            
 
-
-                
-                {/* <Text>user logged: {user?.name} {user?.lastname} {user?._id} {(user?.reader) ? 'Cascada' : 'Paginada'}</Text>
-                {
-                    (isloading)
-                        ? <ActivityIndicator style={{height: 400}} size={80} color="#FFFFFF" />
-                        : (
-                            <View>
-                                <Text>Capitulo: {currentChapter?.number} {currentChapter?.title}</Text>
-                                <Text>{startChapter ? 'Inicio' : endChapter ? 'Fin' : 'Intermedio'}</Text>
-                            </View>
-                        )
-                } */}
-
-                
             </View>
 
         </View>
